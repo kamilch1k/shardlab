@@ -1,0 +1,8 @@
+bin/
+dist/
+reports/
+go-build-cache/
+*.log
+.env
+.env.*
+!.env.example
