@@ -1,0 +1,27 @@
+{
+  "name": "hot-key-consistent",
+  "algorithm": "consistent",
+  "nodesBefore": [
+    { "id": "cache-a" },
+    { "id": "cache-b" },
+    { "id": "cache-c" }
+  ],
+  "nodesAfter": [
+    { "id": "cache-a" },
+    { "id": "cache-b" },
+    { "id": "cache-c" },
+    { "id": "cache-d" }
+  ],
+  "workload": {
+    "keyCount": 10000,
+    "requests": 50000,
+    "seed": 42,
+    "keyPrefix": "tenant",
+    "hotKeys": [
+      { "key": "tenant-vip", "share": 0.4 }
+    ]
+  },
+  "ring": {
+    "virtualNodes": 256
+  }
+}
