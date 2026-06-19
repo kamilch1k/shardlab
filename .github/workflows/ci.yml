@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.x'
+      - name: Check formatting
+        run: test -z "$(gofmt -l .)"
+      - name: Test
+        run: go test ./...
+      - name: Build
+        run: |
+          go build -o bin/shardlab ./cmd/shardlab
+          go build -o bin/shardlab-api ./cmd/api
+      - name: Exercise sample scenario
+        run: ./bin/shardlab -input samples/add-node-consistent.json -format json -out reports/sample-report.json
