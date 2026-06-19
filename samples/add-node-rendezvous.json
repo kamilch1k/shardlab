@@ -1,0 +1,24 @@
+{
+  "name": "add-cache-node-rendezvous",
+  "algorithm": "rendezvous",
+  "nodesBefore": [
+    { "id": "cache-a" },
+    { "id": "cache-b" },
+    { "id": "cache-c" }
+  ],
+  "nodesAfter": [
+    { "id": "cache-a" },
+    { "id": "cache-b" },
+    { "id": "cache-c" },
+    { "id": "cache-d" }
+  ],
+  "workload": {
+    "keyCount": 10000,
+    "requests": 50000,
+    "seed": 42,
+    "keyPrefix": "tenant"
+  },
+  "ring": {
+    "virtualNodes": 256
+  }
+}
